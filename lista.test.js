@@ -83,6 +83,15 @@ test("T2.3 (add, head): Primeiro elemento -Float- adicionado na lista, esperando
    expect(lista.size()).toBe(2);
 });
 
+//TESTE FALHOU; Foi adicionado um valor null como elemento a lista, e após isso, não foi mais possível adicionar outro elemento a lista usando add.
+test("T2.5 (add, head): Adiciona um elemento -Null-,e tenta adicionar mais um elemento -String-, esperando o head ser o primeiro elemento adicionado (null) e o tamanho da lista ser 2", () => {
+   var lista = new LinkedList();
+   lista.add(null);
+   expect(lista.head().element).toEqual(null);
+   list.add(string1);
+   expect(lista.size()).toBe(2);
+});
+
 
 
  //TESTE PASSOU; Criou uma lista vazia, que apos adicinado um elemento, comparou se o elemento 1 é diferente do elemento 2;
@@ -126,8 +135,9 @@ test("T2.3 (add, head): Primeiro elemento -Float- adicionado na lista, esperando
    lista.add(stringHead);
    lista.add(string1);
    lista.add(string2);
+   const listSize = lista.size();
     lista.remove(string1);
-    expect(lista.elementAt(1)).not.toEqual(string1);
+    expect(lista.size()).toEqual(listSize-1);
  });
 
  //TESTE FALHOU; Ao tentar apagar um elemento que não existe na lista, ele da erro na função "remove".
@@ -149,7 +159,6 @@ test("T2.3 (add, head): Primeiro elemento -Float- adicionado na lista, esperando
   const listSize = lista.size();
    lista.removeAt(1);
    expect(lista.size()).toEqual(listSize-1);
-   expect(lista.elementAt(1)).not.toEqual(string1);
 });
 
 //TESTE PASSOU: Não removeu nenhum elemento e a função retornou "null";
